@@ -49,4 +49,21 @@ Run `kubectl create -f blue-green.yml`
 
 When you run this command, a new node is spun up with the Jenkins image. Run `kubectl get nodes` and you shall see 2 deployments in the list.
 
-One is our already running nginx container and the other one is our new Jenkins container. 
+One is our already running nginx container and the other one is our new Jenkins container.
+
+Now how the blue-green deployment works is that we have 2 consequent deployments running on our cluster. We create a new service for this new deployment using the service 2.
+
+`kubectl create -f service2.yml`
+
+This will create a new service and it will be attached to the new deployment.
+
+Now in the live environment, a new deployment environment is create just like this one which is called `green` environment. And the old one is called `blue` environment.
+
+All the final testings are performed on this green environment and if everything seems alright, the existing service of the blue deployment is shifted to the green deployment.
+
+Go to the `service1.yml` file and change the selector app from `app-v1` to `app-v2`.
+Now run `kubectl apply -f service`.yml`
+
+This will divert the traffic on the same nginx homepage to Jenkins page.
+
+This is process of creating a new deployment environment with all it's binaries and libraries, performing testings on it and then switching the traffic to this new deployment is calle **Blue-Green Deployment**.
