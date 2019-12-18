@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+        name: deploy2
+spec:
+        replicas: 5
+        template:
+                metadata:
+                        labels:
+                                app: app-v2
+                spec:
+                        containers:
+                                - name: nginx-ctr
+                                  image: jenkins
+                                  ports:
+                                  - containerPort: 80
+
