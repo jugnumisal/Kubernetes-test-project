@@ -66,4 +66,4 @@ Now run `kubectl apply -f service`.yml`
 
 This will divert the traffic on the same nginx homepage to Jenkins page.
 
-This is process of creating a new deployment environment with all it's binaries and libraries, performing testings on it and then switching the traffic to this new deployment is calle **Blue-Green Deployment**.
+This is process of creating a new deployment environment with all it's binaries and libraries, performing testings on it and then switching the traffic to this new deployment is called **Blue-Green Deployment**.
